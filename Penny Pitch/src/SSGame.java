@@ -5,15 +5,13 @@
  */
 public class SSGame {
 	private int[][] arr;
-	int numThrow;
 
 	/**
 	 * sets the inizital state for the class
 	 * 
 	 */
-	public SSGame(int[][] arr, int numThrow) {
+	public SSGame(int[][] arr) {
 		this.arr = arr;
-		this.numThrow = numThrow;
 	}
 
 	/**
@@ -29,7 +27,7 @@ public class SSGame {
 		}
 		return sum;
 	}
-	
+
 	/**
 	 * resets the array to a given array
 	 * @param arr - the given array that the player wants to reset the array to 
@@ -42,16 +40,16 @@ public class SSGame {
 	 * set the a three random places as zero
 	 */
 	public void throwPennies() {
-		for(int i = numThrow; i > 0; i--) {
-			int row = (int) (Math.random() * arr[0].length);
-			int col = (int) (Math.random() * arr.length);
-			do {
-			row = (int) (Math.random() * arr[0].length);
-			col = (int) (Math.random() * arr.length);	
+		int row = (int) (Math.random() * arr[0].length);
+		int col = (int) (Math.random() * arr.length);
+		do {
+			if(arr[row][col] != 0) {
+				row = (int) (Math.random() * arr[0].length);
+				col = (int) (Math.random() * arr.length);
+			}
 			arr[row][col] = 0;
-			}while(arr[row][col] != 0);
-		}	
-	}	
+		}while(arr[row][col] != 0);
+	}		
 
 	/**
 	 * returns the arr
