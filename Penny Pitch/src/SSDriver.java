@@ -17,6 +17,7 @@ public class SSDriver {
 			int[][] nums = {{1,1,1,1,1}, {1,2,2,2,1}, {1,2,3,2,1}, {1,2,2,2,1}, {1,1,1,1,1}};
 			game.reset(nums);
 			int num = 3;
+			int numPs = 0;
 			
 			while(num > 0) {
 			game.throwPennies();
@@ -24,6 +25,7 @@ public class SSDriver {
 				for(int j = 0; j < game.getArr()[0].length;j++) {
 					if(game.getArr()[i][j] == 0) {
 						System.out.print("P");
+						numPs++;
 					}else {
 					System.out.print(game.getArr()[i][j]);
 					}
