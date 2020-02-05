@@ -37,6 +37,18 @@ public class SSGame {
 		arr = new int[errorCheck][errorCheck2];
 		
 		this.createBoard();
+		
+		int sum = 0;
+		int row = (int) (Math.random() * arr.length);
+		int col = (int) (Math.random() * arr[0].length);
+		do {
+			while (arr[row][col] == 0) {
+				row = (int) (Math.random() * arr[0].length);
+				col = (int) (Math.random() * arr.length);
+			}
+			arr[row][col] = 0;
+			sum++;
+		} while (sum < 12);
 	}
 	
 	
@@ -44,10 +56,12 @@ public class SSGame {
 	 * helps set thie board to the user num
 	 */
 	private void createBoard() {
-		for(int row = 0; row < arr.length; row++) {
-			for(int col = 0; col < arr[row].length; col++) {
-				arr[row][col] += 1;
+		for(int ring = 0; ring < (arr.length+1)/2; ring++) {
+		for(int row = ring; row < arr.length - ring; row++) {
+			for(int col = ring; col < arr[row].length - ring; col++) {
+				arr[row][col]++;
 			}
+		}
 		}
 	}
 

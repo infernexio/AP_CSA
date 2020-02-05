@@ -9,6 +9,7 @@ public class SSDriver {
 
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
+		Scanner in = new Scanner(System.in);
 		int[][] arr = { { 1, 1, 1, 1, 1 }, { 1, 2, 2, 2, 1 }, { 1, 2, 3, 2, 1 }, { 1, 2, 2, 2, 1 }, { 1, 1, 1, 1, 1 } };
 		SSGame game = new SSGame(errorCheck("Please enter the grid size", sc), errorCheck("Please enter the grid size", sc));
 		int money = 10;
@@ -43,7 +44,7 @@ public class SSDriver {
 			int[][] nums = { { 1, 1, 1, 1, 1 }, { 1, 2, 2, 2, 1 }, { 1, 2, 3, 2, 1 }, { 1, 2, 2, 2, 1 },
 					{ 1, 1, 1, 1, 1 } };
 			game.reset(nums);
-		} while (money > 0 && sc.nextLine().equalsIgnoreCase("Yes"));
+		} while (money > 0 && in.nextLine().equalsIgnoreCase("Yes"));
 
 		System.out.println("Thanks for Playing!");
 		sc.close();
