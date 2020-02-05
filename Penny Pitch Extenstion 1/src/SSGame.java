@@ -16,8 +16,8 @@ public class SSGame {
 		this.sum = 0;
 
 		int sum = 0;
-		int row = (int) (Math.random() * arr[0].length);
-		int col = (int) (Math.random() * arr.length);
+		int row = (int) (Math.random() * arr.length);
+		int col = (int) (Math.random() * arr[0].length);
 
 		do {
 			while (arr[row][col] == 0) {
@@ -39,12 +39,14 @@ public class SSGame {
 		this.createBoard();
 	}
 	
-	public void createBoard() {
+	
+	/**
+	 * helps set thie board to the user num
+	 */
+	private void createBoard() {
 		for(int row = 0; row < arr.length; row++) {
 			for(int col = 0; col < arr[row].length; col++) {
-				for(int i = 0; i < arr.length - 2; i++) {
-					
-				}
+				arr[row][col] += 1;
 			}
 		}
 	}
@@ -72,8 +74,8 @@ public class SSGame {
 	public void reset(int[][] arr) {
 		this.arr = arr;
 		
-		int row = (int) (Math.random() * arr[0].length);
-		int col = (int) (Math.random() * arr.length);
+		int row = (int) (Math.random() * arr.length);
+		int col = (int) (Math.random() * arr[0].length);
 
 		do {
 			while (arr[row][col] == 0) {
@@ -97,8 +99,8 @@ public class SSGame {
 	 * set the a three random places as zero
 	 */
 	public void throwPennies() {
-		int row = (int) (Math.random() * arr[0].length);
-		int col = (int) (Math.random() * arr.length);
+		int row = (int) (Math.random() * arr.length);
+		int col = (int) (Math.random() * arr[0].length);
 		do {
 			while (arr[row][col] == -1) {
 				row = (int) (Math.random() * arr[0].length);
