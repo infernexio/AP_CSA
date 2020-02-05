@@ -28,6 +28,26 @@ public class SSGame {
 			sum++;
 		} while (sum < 12);
 	}
+	
+	/**
+	 * sets the inizital state for the class
+	 * 
+	 */
+	public SSGame(int errorCheck, int errorCheck2) {
+		arr = new int[errorCheck][errorCheck2];
+		
+		this.createBoard();
+	}
+	
+	public void createBoard() {
+		for(int row = 0; row < arr.length; row++) {
+			for(int col = 0; col < arr[row].length; col++) {
+				for(int i = 0; i < arr.length - 2; i++) {
+					
+				}
+			}
+		}
+	}
 
 	/**
 	 * gets the total of the arr
