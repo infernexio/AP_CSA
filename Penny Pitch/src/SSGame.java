@@ -43,7 +43,7 @@ public class SSGame {
 		int row = (int) (Math.random() * arr[0].length);
 		int col = (int) (Math.random() * arr.length);
 		do {
-			if(arr[row][col] == 0) {
+			if(arr[row][col] != 0) {
 				row = (int) (Math.random() * arr[0].length);
 				col = (int) (Math.random() * arr.length);
 			}
