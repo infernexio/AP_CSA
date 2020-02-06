@@ -27,6 +27,7 @@ public class SSDriver {
 							}else {
 								game.getArr()[row][col] = SSGameOfLife.DEAD_CELL;
 							}
+							//sohail finish this at school
 						}
 					}
 					System.out.print(game.getArr()[row][col]);

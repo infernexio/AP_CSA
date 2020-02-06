@@ -77,6 +77,7 @@ public class SSGameOfLife {
 		return count;
 	}
 	
+	//just needed to do this so it looks stagesd so i can push
 	/**
 	 * return if the cell is alive or not
 	 * @param row - the given row
