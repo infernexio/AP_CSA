@@ -8,8 +8,8 @@ public class SSGameOfLife {
 	private boolean isAlive;
 	private String[][] arr;
 	
-	private final String DEAD_CELL = "0";
-	private final String ALIVE_CELL = "X";
+	public static final String DEAD_CELL = "0";
+	public static final String ALIVE_CELL = "X";
 	
 	/**
 	 * sets the inizital state for the class
@@ -75,6 +75,20 @@ public class SSGameOfLife {
 					count++;
 				}
 		return count;
+	}
+	
+	/**
+	 * return if the cell is alive or not
+	 * @param row - the given row
+	 * @param col - the given col
+	 * @return - true if the cell is alive false otherwise
+	 */
+	public boolean isAlive(int row, int col) {
+		if(arr[row][col].equalsIgnoreCase(ALIVE_CELL)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	/**
