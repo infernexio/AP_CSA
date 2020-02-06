@@ -11,8 +11,9 @@ public class SSDriver {
 		Scanner sc = new Scanner(System.in);
 		SSGameOfLife game = new SSGameOfLife(errorCheck("Enter a integer for the number of rows: ", sc), errorCheck("Enter a integer for the number of cols: ", sc));
 		
+		game.initilaize(errorCheck("Enter row of live cell: ", sc), errorCheck("Enter col for live cell: ", sc));
+		
 		do {
-			game.initilaize(errorCheck("Enter row of live cell: ", sc), errorCheck("Enter col for live cell: ", sc));
 			for(int row = 0; row < game.getArr().length; row++) {
 				for(int col = 0; col  <game.getArr()[row].length; col++) {
 					System.out.print(game.getArr()[row][col]);
