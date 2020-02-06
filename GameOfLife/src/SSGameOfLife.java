@@ -50,28 +50,28 @@ public class SSGameOfLife {
 		int count = 0;
 		int i = row;
 		int j = col;
-				if(!(i++ > arr.length) &&  arr[i][j] == arr[i+1][j]) {
+				if(!(i++ < arr.length) && ALIVE_CELL == arr[i+1][j]) {
 					count++;
 				}
-				if((!(i++ > arr.length) && !(j++ > arr[i].length)) &&  arr[i][j] == arr[i+1][j+1]) {
+				if((!(i++ < arr.length) && !(j++ < arr[i].length)) &&  ALIVE_CELL == arr[i+1][j+1]) {
 					count++;
 				}
-				if((!(i++ > arr.length) && !(j-- > arr[i].length)) &&  arr[i][j] == arr[i+1][j-1]) {
+				if(((i++ < arr.length) && (j-- < 0)) && ALIVE_CELL == arr[i+1][j-1]) {
 					count++;
 				}
-				if(!(i-- > arr.length) &&  arr[i][j] == arr[i-1][j]) {
+				if(!(i-- < arr.length) &&  ALIVE_CELL == arr[i-1][j]) {
 					count++;
 				}
-				if((!(i-- > arr.length) && !(j++ > arr[i].length)) &&  arr[i][j] == arr[i-1][j+1]) {
+				if(((i-- < arr.length) && !(j++ < arr[i].length)) &&  ALIVE_CELL == arr[i-1][j+1]) {
 					count++;
 				}
-				if((!(i-- > arr.length) && !(j-- > arr[i].length)) &&  arr[i][j] == arr[i-1][j-1]) {
+				if(((i-- < arr.length) && (j-- < 0)) &&  ALIVE_CELL == arr[i-1][j-1]) {
 					count++;
 				}
-				if(!(j++ > arr[i].length) &&  arr[i][j] == arr[i][j+1]) {
+				if(!(j++ < arr[i].length) &&  ALIVE_CELL == arr[i][j+1]) {
 					count++;
 				}
-				if(!(j-- > arr[i].length) &&  arr[i][j] == arr[i][j-1]) {
+				if((j-- < 0) &&  ALIVE_CELL == arr[i][j-1]) {
 					count++;
 				}
 		return count;
