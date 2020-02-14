@@ -1,136 +1,76 @@
+import java.util.Scanner;
+
 /**
  * @author - Sohail Shaik
  * @Date - Jan 31,2019
- * @Assignment - SSGame
+ * @Assignment - SSDriver
  */
-public class SSGame {
-	private int[][] arr;
-	private int sum;
+public class SSDriver {
 
-	/**
-	 * sets the inizitalizes state for the class
-	 */
-	public SSGame(int[][] arr) {
-		this.arr = arr;
-		this.sum = 0;
-
-		int sum = 0;
-		int row = (int) (Math.random() * arr.length);
-		int col = (int) (Math.random() * arr[0].length);
-
-		do {
-			while (arr[row][col] == 0) {
-				row = (int) (Math.random() * arr[0].length);
-				col = (int) (Math.random() * arr.length);
-			}
-			arr[row][col] = 0;
-			sum++;
-		} while (sum < 12);
-	}
-	
-	/**
-	 * sets the inizital state for the class
-	 * 
-	 */
-	public SSGame(int errorCheck, int errorCheck2) {
-		arr = new int[errorCheck][errorCheck2];
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		Scanner in = new Scanner(System.in);
+		int[][] arr = { { 1, 1, 1, 1, 1 }, { 1, 2, 2, 2, 1 }, { 1, 2, 3, 2, 1 }, { 1, 2, 2, 2, 1 }, { 1, 1, 1, 1, 1 } };
+		int num1 = errorCheck("Please enter the grid size", sc);
+		SSGame game = new SSGame(num1, num1);
+		int money = 10;
+		int total = game.getTotal();
 		
-		this.createBoard();
 		
-		int sum = 0;
-		int row = (int) (Math.random() * arr.length);
-		int col = (int) (Math.random() * arr[0].length);
-		do {
-			while (arr[row][col] == 0) {
-				row = (int) (Math.random() * arr[0].length);
-				col = (int) (Math.random() * arr.length);
-			}
-			arr[row][col] = 0;
-			sum++;
-		} while (sum < 12);
-	}
-	
-	
-	/**
-	 * helps set thie board to the user num
-	 */
-	private void createBoard() {
-		for(int ring = 0; ring < (arr.length+1)/2; ring++) {
-		for(int row = ring; row < arr.length - ring; row++) {
-			for(int col = ring; col < arr[row].length - ring; col++) {
-				arr[row][col]++;
-			}
-		}
-		}
-	}
-
-	/**
-	 * gets the total of the arr
-	 * 
-	 * @return - the total of the arr
-	 */
-	public int getTotal() {
-		int sum = 0;
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
-				sum += arr[i][j];
-			}
-		}
-		return sum;
-	}
-
-	/**
-	 * resets the array to a given array
-	 * 
-	 * @param arr - the given array that the player wants to reset the array to
-	 */
-	public void reset(int[][] arr) {
-		this.arr = arr;
 		
-		int row = (int) (Math.random() * arr.length);
-		int col = (int) (Math.random() * arr[0].length);
 
 		do {
-			while (arr[row][col] == 0) {
-				row = (int) (Math.random() * arr[0].length);
-				col = (int) (Math.random() * arr.length);
+			int num = 3;
+
+			while (num > 0) {
+				game.throwPennies();
+				money--;
+				for (int i = 0; i < game.getArr().length; i++) {
+					for (int j = 0; j < game.getArr()[0].length; j++) {
+						if (game.getArr()[i][j] == -1) {
+							System.out.print("P");
+						} else {
+							System.out.print(game.getArr()[i][j]);
+						}
+					}
+					System.out.println();
+				}
+				money += game.sum();
+				System.out.println("Scores: " + (game.sum()));
+				System.out.println("you have : " + money + "C" );
+				num--;
 			}
-			arr[row][col] = 0;
-			sum++;
-		} while (sum < 12);
+
+			System.out.print("Do you want to play again: ");
+			int[][] nums1 = { { 1, 1, 1, 1, 1 }, { 1, 2, 2, 2, 1 }, { 1, 2, 3, 2, 1 }, { 1, 2, 2, 2, 1 },
+					{ 1, 1, 1, 1, 1 } };
+			game.reset(nums1);
+		} while (money > 0 && in.nextLine().equalsIgnoreCase("Yes"));
+
+		System.out.println("Thanks for Playing!");
+		sc.close();
 	}
 	
 	/**
-	 * the sum of the number removed for the grid
-	 * @return - the sum of the number removed for the grid
+	 * checks for wrong input to a promt
+	 * @param promt - the promt the program wants to ask the user
+	 * @param in - a scanner object that is used to check the user input
+	 * @return - an int that is checked for the wrong input to a promt
 	 */
-	public int sum() {
-		return this.sum;
-	}
-
-	/**
-	 * set the a three random places as zero
-	 */
-	public void throwPennies() {
-		int row = (int) (Math.random() * arr.length);
-		int col = (int) (Math.random() * arr[0].length);
+	public static int errorCheck(String promt, Scanner in) {
+		int userNum;
 		do {
-			while (arr[row][col] == -1) {
-				row = (int) (Math.random() * arr[0].length);
-				col = (int) (Math.random() * arr.length);
+			System.out.println(promt);
+			while (!in.hasNextInt()){
+				System.out.println("That was not an int! Try again.");
+				in.next();
 			}
-			this.sum = arr[row][col];
-			arr[row][col] = -1;
-		} while (arr[row][col] != -1);
-	}
-
-	/**
-	 * returns the arr
-	 * 
-	 * @return - the arr
-	 */
-	public int[][] getArr() {
-		return arr;
+			userNum = in.nextInt();
+			if(userNum  < 0) {
+				System.out.println("You can't enter an negative!");
+			}
+		}while(userNum < 0);
+		return userNum;
 	}
 
 }
